@@ -1,4 +1,6 @@
-class Solution { //TC- O(n) tough to analyse , SC-O(n)
+//The while loop inside the main loop pops elements from the stack, but each element is popped at most once. 
+//So, while it may run multiple times for each iteration of the main loop, each element is pushed and popped only once in total.
+class Solution { //TC- O(2n)~O(n) tough to analyse  , SC-O(n)
 public:
     vector<int> nextGreaterElements(vector<int>& nums) {
         int n = nums.size();
