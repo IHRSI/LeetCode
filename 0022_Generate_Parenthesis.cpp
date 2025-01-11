@@ -1,4 +1,4 @@
-//TC- O(2nCn), SC- O(Cn2n) , where Cn=2n!/(n+1)!n! to fine no. of possible combination
+//TC- O(2nCn), SC- O(Cn2n) , where Cn=2n!/(n+1)!n! to find no. of possible combination
 class Solution {
 public:
     vector<string> res;
