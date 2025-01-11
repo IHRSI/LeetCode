@@ -1,4 +1,4 @@
-class Solution {// TC- O(n1*l1 + n2*l2) , SC- O(26*3+ ans.size())=O(ans.size())
+class Solution {// TC- O(n1*l1 + n2*l2) ,SC- O(26*3+ ans.size())=O(ans.size())
 public:
     vector<string> wordSubsets(vector<string>& words1, vector<string>& words2) {
         vector<string> ans;
