@@ -24,7 +24,7 @@ public:
     }
 };
 
-//Without stack better effeciency , SC-O(1), TC-O(n)
+//Without stack better effeciency, SC-O(1), TC-O(n)
 class Solution {
 public:
     bool canBeValid(string s, string locked) {
