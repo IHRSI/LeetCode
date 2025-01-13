@@ -1,5 +1,5 @@
-//Both methods are efficient
-//Used backtracking
+// Both methods are efficient
+// Used backtracking
 class Solution {// TC=SC=O(n*2^n)
 public:
     vector<vector<int>> ans;
