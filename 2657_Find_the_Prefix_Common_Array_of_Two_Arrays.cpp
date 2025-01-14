@@ -1,5 +1,5 @@
 //Hashing method
-class Solution {//TC=SC=O(n), here we use bool datatype
+class Solution { //TC=SC=O(n), here we use bool datatype
 public:
     vector<int> findThePrefixCommonArray(vector<int>& A, vector<int>& B) {
         int n=A.size();
