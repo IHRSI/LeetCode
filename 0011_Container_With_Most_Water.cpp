@@ -1,5 +1,5 @@
 //Efficient code using two pointer
-class Solution { // TC-O(n), SC=O(1)
+class Solution { //TC-O(n), SC=O(1)
 public:
     int maxArea(vector<int>& height) {
         int n=height.size();
