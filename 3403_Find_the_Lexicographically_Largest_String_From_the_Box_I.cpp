@@ -18,7 +18,7 @@ public:
             }
             else j+=k+1;
         }
-        return s.substr(i,n-1);
+        return s.substr(i,n-i);
     }
     string answerString(string word, int numFriends) {
         if(numFriends==1){
