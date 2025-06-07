@@ -7,7 +7,7 @@ public:
         vector<vector<int>> ans;
         for(int i=0;i<n-2;i++){
             if(i>0 && nums[i]==nums[i-1]) continue;// removing duplicates
-            int sum=0-nums[i];
+            int sum=0-nums[i];//2sum logic
             int j=i+1;
             int k=n-1;
             while(j<k){// Two pointer concept
