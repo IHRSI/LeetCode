@@ -1,4 +1,4 @@
-class Solution { // TC=O(n) - notice while inside for it doesn't run more than O(log n) over the whole loop because each backtrack shortens the number. , SC=O(1) 
+class Solution { // TC=O(n) - (Think recursion tree- as no number is visited again )notice while inside for it doesn't run more than O(log n) over the whole loop because each backtrack shortens the number. , SC=O(1) 
 //The space complexity analysis does not account for the result list itself, as the problem requires returning a list with n elements.
 //The space used by the list is not considered in the complexity analysis.
 //Iterative implementation using DSF logic
