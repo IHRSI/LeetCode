@@ -1,3 +1,32 @@
+class Solution { //TC=O(nlogn) ; SC=O(n)
+//Inserting and removing from the priority queue takes O(logn) per operation.
+public:
+    string clearStars(string s) {
+        int n=s.length();
+        priority_queue<char,vector<char>,greater<char>> pq;
+        unordered_map<char,stack<int>> um;
+        int i=-1;
+        for(char c: s){
+            i++;
+            if(c=='*'){
+                char small=pq.top();
+                pq.pop();
+                s[um[small].top()]='*';
+                um[small].pop();
+            }
+            else{
+                um[c].push(i);
+                pq.push(c);
+            }
+        }
+        string ans="";
+        for(char c: s){
+            if(c!='*') ans.push_back(c);
+        }
+        return ans;
+    }
+};
+
 class Solution {// TC=O(n*26) , SC=O(n)
 public:
     string clearStars(string s) {
