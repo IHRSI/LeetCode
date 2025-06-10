@@ -26,7 +26,7 @@ public:
 };
 
 //Alternative - Same implementation as before usinf diff DS
-class Solution {
+class Solution {//TC=O(nlog26) ,SC=O(n)
 public:
     string clearStars(string s) {
 
