@@ -12,7 +12,7 @@ public:
     }
 };
 // Better soln - x^x=0 and x^0=x using this concept
-class Solution {
+class Solution {//TC=O(n) SC=O(1)
 public:
     int singleNumber(vector<int>& nums) {
         int ans = 0;
