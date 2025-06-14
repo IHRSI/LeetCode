@@ -1,3 +1,5 @@
+//This is classic greedy thinking:
+//"To maximize the number, make the biggest impactful change early.
 class Solution {//TC=O(logn) : n=no of digits , SC=O(logn)
 public:
     int minMaxDifference(int num) {
