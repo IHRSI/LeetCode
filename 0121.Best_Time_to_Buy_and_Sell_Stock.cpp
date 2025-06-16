@@ -1,7 +1,7 @@
-//Using 2 pointer not efficient
+//Using 2 pointer this is also efficient
 class Solution {
 public:
-    int maxProfit(vector<int>& prices) { // TC=O(n) 19ms, SC=(1)
+    int maxProfit(vector<int>& prices) { // TC=O(n) 0ms, SC=(1)
         if(prices.size()==1) return 0;
         int ans=0;
         int l=0,r=1;
@@ -11,24 +11,25 @@ public:
                 r++;
             }
             else{
-                l++;
-                r=l+1;
+                l=r;
+                ++r;
             }
         }
         return ans;
     }
 };
 
-// Efficient
+// Efficient Greedy - one pass optimisation
 class Solution { // TC=O(n) 0ms, SC=(1)
 public:
     int maxProfit(vector<int>& prices) {
         int min_price = prices[0];
         int maxprof = 0;
-
         for(int i=1;i<prices.size();i++){
-            maxprof = max(maxprof,prices[i]-min_price);
-            min_price = min(prices[i],min_price);
+            if(prices[i]>min_price){
+                maxprof = max(maxprof,prices[i]-min_price);
+            }
+            else min_price=prices[i];
         }
         return maxprof;
     }
