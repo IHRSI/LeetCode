@@ -48,7 +48,7 @@ public:
 };
 
 //Basic sorting
-class Solution { //TC=O(nlogn) , SC=O(1)
+class Solution { //TC=O(nlogn) , SC=O(logn)
 public:
     int findKthLargest(vector<int>& nums, int k) {
         sort(nums.begin(),nums.end());
