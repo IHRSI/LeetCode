@@ -8,6 +8,7 @@ public:
         int i=0,attended=0;
         while(i<n || !pq.empty()){//Worst case we iterate day 1 in each each iteration assume events[n-1][1]=T(max day) TC=O(Tlogn*2)=O(Tlogn)
             if(pq.empty()) day=events[i][0];
+            //Inside while maximum we push and pop once all elements of events i.e we visit them 2 times. They are O(logn) operations due to pq
             while(i<n && day==events[i][0]){
                 pq.push(events[i][1]);//O(logn)
                 ++i;
