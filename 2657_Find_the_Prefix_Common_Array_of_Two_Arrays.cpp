@@ -4,7 +4,7 @@ public:
     vector<int> findThePrefixCommonArray(vector<int>& A, vector<int>& B) {
         int n=A.size();
         vector<bool> freq(n+1,false);
-        vector<int> ans;
+        vector<int> ans;//ans array is monotonic increasing
         int common=0;
         for(int i=0; i<n;++i){
             if(A[i]==B[i]) common++;
