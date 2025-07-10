@@ -1,4 +1,10 @@
 //Understand by drawing an example to do correct indexing
+        M0      M1      M2      M3      M4
+G0      |       |       |       |       |    
+|-------|-------|-------|-------|-------|-------
+        0       1       2       3       n-1
+   G0      G1      G2      G3      G4      G5
+   0        1       2       3       4       6=n
 class Solution {//TC=O(4n)~O(n) , SC=O(3n)~O(n)
 public:
     int maxFreeTime(int eventTime, vector<int>& startTime, vector<int>& endTime) {
