@@ -1,4 +1,5 @@
-/*we can see that the largest bitwise AND can only be achieved when all the elements in the subarray are equal to the maximum number.
+//Coded and thought myself
+/*We can see that the largest bitwise AND can only be achieved when all the elements in the subarray are equal to the maximum number.
 So, the task is to find the longest subarray where all the numbers are the maximum value in the array.*/
 class Solution {
 public:
