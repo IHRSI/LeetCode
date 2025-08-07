@@ -2,7 +2,7 @@
 //35 ms , 75mb
 class Solution {
 public:
-    int totalFruit(vector<int>& fruits) {//TC=O(n) , SC=O(1)
+    int totalFruit(vector<int>& fruits) {//TC=O(n), SC=O(1)
         int n=fruits.size();
         int ans=0,left=0;
         unordered_map<int,int> us;
