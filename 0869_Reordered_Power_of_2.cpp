@@ -31,6 +31,23 @@ public:
     }
 };
 
+//Used str convirsion followed by sorting
+class Solution {//TC=O(30*10log(10))=O(300)=O(1) , SC=O(1)
+public:
+    bool reorderedPowerOf2(int n) {
+        auto sortDigits = [](int x) {
+            string s = to_string(x);
+            sort(s.begin(), s.end());
+            return s;
+        };
+        string target = sortDigits(n);
+        for (int i = 0; i < 31; i++) {
+            if (sortDigits(1 << i) == target) return true;
+        }
+        return false;
+    }
+};
+
 //Used precomputation for better efficiency- The code is same just the precompute function contains
 //the precomputed part which runs only once.
 const int x = 29;
