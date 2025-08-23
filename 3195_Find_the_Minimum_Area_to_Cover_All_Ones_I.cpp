@@ -17,45 +17,49 @@ public:
         return (b-a+1)*(d-c+1);
     }
 };
-
+//Surprisingly not, four traversals and breaking the loop for each when element is found is faster than one traversal.
 class Solution {
 public:
-    int minimumArea(vector<vector<int>>& grid) {
-        int row=grid.size();
-        int col=grid[0].size();
-        int a=row,b=0,c=col,d=0;
-        for(int i=0;i<row;++i){
-            for(int j=0;j<col;++j){
-                if(grid[i][j]){
-                    a=i;
+    int minimumArea(vector<vector<int>>& grid) {//TC=O(n*m) , SC=O(1)
+        int row = grid.size();
+        int col = grid[0].size();
+        int top = row, bottom = -1, left = col, right = -1;
+        for (int i = 0; i < row; ++i) {
+            for (int j = 0; j < col; ++j) {
+                if (grid[i][j] == 1) {
+                    top = i;
                     break;
                 }
             }
+            if (top != row) break;
         }
-        for(int i=row-1;i>=0;--i){
-            for(int j=0;j<col;++j){
-                if(grid[i][j]){
-                    b=i;
+        for (int i = row - 1; i >= 0; --i) {
+            for (int j = 0; j < col; ++j) {
+                if (grid[i][j] == 1) {
+                    bottom = i;
                     break;
                 }
             }
+            if (bottom != -1) break;
         }
-        for(int i=0;i<col;++i){
-            for(int j=0;j<row;++j){
-                if(grid[j][i]){
-                    c=j;
+        for (int j = 0; j < col; ++j) {
+            for (int i = 0; i < row; ++i) {
+                if (grid[i][j] == 1) {
+                    left = j;
                     break;
                 }
             }
+            if (left != col) break;
         }
-        for(int i=col-1;i>=0;--i){
-            for(int j=0;j<row;++j){
-                if(grid[j][i]){
-                    d=j;
+        for (int j = col - 1; j >= 0; --j) {
+            for (int i = 0; i < row; ++i) {
+                if (grid[i][j] == 1) {
+                    right = j;
                     break;
                 }
             }
+            if (right != -1) break;
         }
-        return (b-a+1)*(d-c+1);
+        return (bottom - top + 1) * (right - left + 1);
     }
 };
