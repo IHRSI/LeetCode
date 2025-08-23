@@ -17,3 +17,45 @@ public:
         return (b-a+1)*(d-c+1);
     }
 };
+
+class Solution {
+public:
+    int minimumArea(vector<vector<int>>& grid) {
+        int row=grid.size();
+        int col=grid[0].size();
+        int a=row,b=0,c=col,d=0;
+        for(int i=0;i<row;++i){
+            for(int j=0;j<col;++j){
+                if(grid[i][j]){
+                    a=i;
+                    break;
+                }
+            }
+        }
+        for(int i=row-1;i>=0;--i){
+            for(int j=0;j<col;++j){
+                if(grid[i][j]){
+                    b=i;
+                    break;
+                }
+            }
+        }
+        for(int i=0;i<col;++i){
+            for(int j=0;j<row;++j){
+                if(grid[j][i]){
+                    c=j;
+                    break;
+                }
+            }
+        }
+        for(int i=col-1;i>=0;--i){
+            for(int j=0;j<row;++j){
+                if(grid[j][i]){
+                    d=j;
+                    break;
+                }
+            }
+        }
+        return (b-a+1)*(d-c+1);
+    }
+};
