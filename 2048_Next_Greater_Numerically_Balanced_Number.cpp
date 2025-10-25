@@ -1,8 +1,41 @@
+//Backtracking soln
+class Solution {//TC=O(9^d), d=no. of digits in n, SC=O(1)
+public:
+    vector<int> hsh{0,1,2,3,4,5,6,7,8,9};
+    int bt(int n,int curr,int len){
+        if(len==0){
+            for(int i=1;i<=9;++i){
+                if(hsh[i]!=0 && hsh[i]!=i) return 0;
+            }
+            return curr>n?curr:0;
+        }
+        int res=0;
+        for(int digit = 1; digit <= 9; digit++) {
+            if(hsh[digit] > 0 && hsh[digit] <= len) {
+                hsh[digit]--;
+                res = bt(n, curr*10+digit, len-1);
+                hsh[digit]++;
+            }
+            if(res != 0) {
+                break;
+            }
+        }
+        return res;
+    }
+    int nextBeautifulNumber(int n) {
+        int ans=0;
+        int len=to_string(n).size();
+        ans=bt(n,0,len);
+        if(ans==0) ans=bt(n,0,len+1);
+        return ans;
+    }
+};
+
 //We get different runtime and space usage dur to use of array in one and vector in other otherwise everything is same
 //Runtime = 55ms, space 8mb
 class Solution {
 public:
-    int nextBeautifulNumber(int n) {//TC=O(1224444*(logn+10)), SC=O(10)~O(1)
+    int nextBeautifulNumber(int n) {//TC=O((1224444-n)*(logn+10)), SC=O(10)~O(1)
         for(int i=n+1;i<=1224444;++i){
             int num=i;
             int v[10]={0};
