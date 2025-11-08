@@ -9,7 +9,7 @@ public:
             for(int j=i;j<k+i;++j){
                 ++um[nums[j]];
             }
-            vector<pair<int,int>> vp;
+            vector<pair<int,int>> vp;//could have used pq(max heap) here
             for(auto &ele: um){
                 vp.emplace_back(ele.second,ele.first);
             }
@@ -17,6 +17,16 @@ public:
             for(int j=0; j<x && j<vp.size(); ++j){
                 xsum+=vp[j].first*vp[j].second;
             }
+            /*
+            priority_queue<pair<int,int>> pq;
+            for(auto ele: um){
+                pq.push({ele.second,ele.first});
+            }
+            for(int k=0;k<x && k<um.size();++k){
+                xsum+=pq.top().first*pq.top().second;
+                pq.pop();
+            }
+            */
             ans[i]=xsum;
         }
         return ans;
