@@ -1,4 +1,4 @@
-class Solution {
+class Solution {//Bottom Up DP
 public:
     int minimumTotal(vector<vector<int>>& triangle) {//TC=O(n^2), SC=O(1)
         int ans=triangle[0][0];
