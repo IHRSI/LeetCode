@@ -31,10 +31,13 @@ echo ""
 echo "Files modified in these commits:"
 echo "================================"
 
-# For each commit that matches, show the files changed
-git log --all --grep="$KEYWORD" -i --name-only --pretty=format:"%h %s" | grep -v '^$' | while read -r line; do
-    # Check if this is a commit line (starts with hash)
-    if [[ $line =~ ^[0-9a-f]{7}\ .* ]]; then
+# Get all data in one git log call for efficiency
+COMMIT_DATA=$(git log --all --grep="$KEYWORD" -i --name-only --pretty=format:"%h %s")
+
+# Display commits with their files
+echo "$COMMIT_DATA" | grep -v '^$' | while read -r line; do
+    # Check if this is a commit line (starts with hash followed by space)
+    if [[ $line =~ ^[0-9a-f]+[[:space:]] ]]; then
         echo ""
         echo "Commit: $line"
     else
@@ -47,5 +50,5 @@ echo ""
 echo "Summary of unique files:"
 echo "========================"
 
-# Get unique list of files
-git log --all --grep="$KEYWORD" -i --name-only --pretty=format:"" | grep -v '^$' | sort -u
+# Extract and display unique list of files from the already fetched data
+echo "$COMMIT_DATA" | grep -v '^$' | grep -v '^[0-9a-f]\+[[:space:]]' | sort -u
