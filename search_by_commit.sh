@@ -37,7 +37,7 @@ COMMIT_DATA=$(git log --all --grep="$KEYWORD" -i --name-only --pretty=format:"%h
 # Display commits with their files
 echo "$COMMIT_DATA" | grep -v '^$' | while read -r line; do
     # Check if this is a commit line (starts with hash followed by space)
-    if [[ $line =~ ^[0-9a-f]+[[:space:]] ]]; then
+    if [[ $line =~ ^[0-9a-fA-F]+[[:space:]] ]]; then
         echo ""
         echo "Commit: $line"
     else
@@ -51,4 +51,4 @@ echo "Summary of unique files:"
 echo "========================"
 
 # Extract and display unique list of files from the already fetched data
-echo "$COMMIT_DATA" | grep -v '^$' | grep -v '^[0-9a-f]\+[[:space:]]' | sort -u
+echo "$COMMIT_DATA" | grep -v '^$' | grep -v '^[0-9a-fA-F]\+[[:space:]]' | sort -u
