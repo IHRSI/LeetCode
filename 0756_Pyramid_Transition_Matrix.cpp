@@ -42,3 +42,82 @@ public:
         return bt(bottom,"",um,0);
     }
 };
+
+//Bit Masking and manipulation use - Better runtime and space utilisation
+class Solution {//TC ans SC remains same but peformance improves
+public:
+    // memo[row_key] = whether this row can form a pyramid
+    unordered_map<int, bool> memo;
+
+    // transition[a][b] = bitmask of possible top blocks
+    int transition[6][6] = {};
+
+    // Backtracking to build next row from bitmasks
+    bool buildNextRow(int idx,
+                      vector<int>& nextRow,
+                      vector<int>& nextMasks) {
+        if (idx == nextRow.size())
+            return dfs(nextRow);
+
+        int mask = nextMasks[idx];
+
+        // try all possible letters using bits
+        while (mask) {
+            int bit = mask & -mask;           // lowest set bit
+            int letter = __builtin_ctz(bit);  // index of bit
+
+            nextRow[idx] = letter;
+            if (buildNextRow(idx + 1, nextRow, nextMasks))
+                return true;
+
+            mask -= bit; // remove this option
+        }
+        return false;
+    }
+
+    // DFS on current row
+    bool dfs(vector<int>& row) {
+        int n = row.size();
+        if (n == 1) return true;
+
+        // encode row into an integer key (base-6)
+        int key = 0;
+        for (int x : row)
+            key = key * 6 + x;
+
+        if (memo.count(key))
+            return memo[key];
+
+        vector<int> nextMasks(n - 1, 0);
+
+        // compute possible masks for next row
+        for (int i = 0; i < n - 1; i++) {
+            nextMasks[i] = transition[row[i]][row[i + 1]];
+            if (nextMasks[i] == 0)
+                return memo[key] = false;
+        }
+
+        vector<int> nextRow(n - 1);
+
+        bool res = buildNextRow(0, nextRow, nextMasks);
+        memo[key] = res;
+        return res;
+    }
+
+    bool pyramidTransition(string bottom, vector<string>& allowed) {
+        // build transition table
+        for (auto &s : allowed) {
+            int a = s[0] - 'A';
+            int b = s[1] - 'A';
+            int c = s[2] - 'A';
+            transition[a][b] |= (1 << c);
+        }
+
+        // convert bottom string to numeric row
+        vector<int> row;
+        for (char c : bottom)
+            row.push_back(c - 'A');
+
+        return dfs(row);
+    }
+};
