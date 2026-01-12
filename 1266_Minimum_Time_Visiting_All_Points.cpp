@@ -8,7 +8,7 @@ public:
             int y1=points[i][1];
             int x2=points[i+1][0];
             int y2=points[i+1][1];
-            time+=max(abs(x1-x2),abs(y1-y2));
+            time+=max(abs(x1-x2),abs(y1-y2));//Chebyshev distance
         }
         return time;
     }
