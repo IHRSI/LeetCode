@@ -37,3 +37,19 @@ public:
         return lca(root,0);
     }
 };
+
+//One pass approach
+class Solution {
+public:
+    pair<TreeNode*,int> lca(TreeNode* node){//TC=O(n)
+        if(node==nullptr) return{nullptr,0};
+        auto left=lca(node->left);
+        auto right=lca(node->right);
+        if(left.second>right.second) return{left.first,left.second+1};
+        else if(left.second<right.second) return{right.first,right.second+1};
+        return {node,left.second+1};
+    }
+    TreeNode* lcaDeepestLeaves(TreeNode* root) {
+        return lca(root).first;
+    }
+};
