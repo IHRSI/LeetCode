@@ -1,3 +1,24 @@
+class Solution {//TC=O(n),SC=O(1)
+public:
+    void sortColors(vector<int>& nums) {
+        int n=nums.size();
+        int i=0,j=n-1;
+        int mid=0;
+        while(mid<=j){
+            if(nums[mid]==1) ++mid;
+            else if(nums[mid]==2){
+                swap(nums[mid],nums[j]);
+                --j;
+            }
+            else{
+                swap(nums[mid],nums[i]);
+                ++i;
+                ++mid;
+            }
+        }
+    }
+};
+    
 class Solution {//TC=O(nlogn) SC=O(n)
 public:
     void sortColors(vector<int>& nums) {
