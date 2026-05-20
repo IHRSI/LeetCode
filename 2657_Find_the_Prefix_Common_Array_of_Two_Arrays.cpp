@@ -13,6 +13,13 @@ public:
             freq[A[i]]=true;
             freq[B[i]]=true;
             ans.push_back(common);
+            /*Alt
+            if(freq[A[i]]==true) common++;
+            freq[A[i]]=true;
+            if(freq[B[i]]==true) common++;
+            freq[B[i]]=true;
+            ans.push_back(common);
+            */
         }
         return ans;
     }
