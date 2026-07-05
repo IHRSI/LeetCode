@@ -1,7 +1,7 @@
 //DFS
 class Solution {
 public:
-    void dfs(int n1,unordered_map<int,vector<pair<int,int>>> &adj, vector<bool> &vis, int &mdis){//TC=O(E+V+2E)~O(V+E), SC=O(V) - worse case sparse
+    void dfs(int n1,unordered_map<int,vector<pair<int,int>>> &adj, vector<bool> &vis, int &mdis){//TC=O(E+V+2E)~O(V+E), SC=O(V) - worse case sparse graph
         vis[n1]=1;
         for(auto cnode: adj[n1]){
             int n2=cnode.first,dis=cnode.second;
@@ -27,7 +27,7 @@ public:
 //BSF
 class Solution {
 public:
-    void bfs(int n1,unordered_map<int,vector<pair<int,int>>> &adj, vector<bool> &vis, int &mdis){//TC=O(E+V+2E)~O(V+E), SC=O(V/2)~O(V)- worst case balanced
+    void bfs(int n1,unordered_map<int,vector<pair<int,int>>> &adj, vector<bool> &vis, int &mdis){//TC=O(E+V+2E)~O(V+E), SC=O(V/2)~O(V)- worst case balanced graph
         queue<int> q;
         q.push(n1);
         vis[n1]=1;
