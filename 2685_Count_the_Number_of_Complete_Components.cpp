@@ -76,3 +76,34 @@ public:
         return ct;
     }
 };
+
+//Adjacency List approach
+class Solution {
+public:
+    int countCompleteComponents(int n, vector<vector<int>>& edges) {//TC=O(V+E+V*(VlogV+V)++V+2E)~O(V^2logV+E), SC-O(2V+2E+(V+2E)+V+logV+V)~O(V+E+logV)
+        vector<vector<int>> adj(n);
+        for(int i=0;i<n;++i){
+            adj[i].push_back(i);
+        }
+        for(auto edge:edges){
+            adj[edge[0]].push_back(edge[1]);
+            adj[edge[1]].push_back(edge[0]);
+        }
+        unordered_map<string,int> compfreq;
+        for(int i=0;i<n;++i){
+            vector<int> nebors=adj[i];
+            sort(nebors.begin(),nebors.end());
+            string key="";
+            for(int num:nebors){
+                key+=to_string(num)+",";
+            }
+            ++compfreq[key];
+        }
+        int compct=0;
+        for(auto &p: compfreq){
+            int size=count(p.first.begin(),p.first.end(),',');
+            if(size==p.second) ++compct;
+        }
+        return compct;
+    }
+};
