@@ -1,3 +1,4 @@
+//LC 316 has the same soln
 //Solved this Q from dry run and logic the code came out to be implementation of monotonic stack style
 //Maintain a lexicographically increasing stack; if a smaller character arrives and the stack's top appears again later, pop it so the smaller character can come earlier.
 class Solution {
