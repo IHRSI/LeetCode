@@ -14,6 +14,20 @@ public:
         return ans;
     }
 };
+//Using us in place of bool array hashing
+class Solution {
+public:
+    vector<int> findMissingElements(vector<int>& nums) {//TC=O(n+n+n+r)!O(n+r), SC=O(n)
+        int larg=*max_element(nums.begin(),nums.end());
+        int smal=*min_element(nums.begin(),nums.end());
+        unordered_set<int> us(nums.begin(),nums.end());
+        vector<int> ans;
+        for(int i=smal+1;i<larg;++i){
+            if(!us.count(i)) ans.push_back(i);
+        }
+        return ans;
+    }
+};
 
 //More time less space
 class Solution {
