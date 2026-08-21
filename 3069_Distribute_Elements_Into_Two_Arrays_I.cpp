@@ -1,3 +1,4 @@
+//Simulation
 class Solution {
 public:
     vector<int> resultArray(vector<int>& nums) {//TC=O(n), SC=O(n)
@@ -14,6 +15,8 @@ public:
     }
 };
 
+
+//Simulation + 2ptr
 class Solution {
 public:
     vector<int> resultArray(vector<int>& nums) {//TC=O(n), SC=O(1) , Apart from the output array itself, we only use a constant number of additional variables.
