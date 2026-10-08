@@ -1,3 +1,4 @@
+//My approach
 class Solution {
 public:
     string removeOuterParentheses(string s) {//TC=O(n), SC=O(n)
@@ -15,5 +16,26 @@ public:
             }
         }
         return ans;
+    }
+};
+
+//Editorial way
+class Solution {
+public:
+    string removeOuterParentheses(string s) {//TC=O(n), SC=O(n)
+        int level = 0;
+        string res;
+        for (auto c : s) {
+            if (c == ')') {
+                level--;
+            }
+            if (level) {
+                res.push_back(c);
+            }
+            if (c == '(') {
+                level++;
+            }
+        }
+        return res;
     }
 };
